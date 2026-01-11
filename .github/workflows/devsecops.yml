@@ -121,6 +121,15 @@ jobs:
           target: "http://localhost:5000"
           fail_action: false
 
+      - name: Upload ZAP Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-reports
+          path: |
+            report_html.html
+            report_json.json
+            report_md.md
+
       - name: Stop Container
         run: docker stop zap-test && docker rm zap-test
 
