@@ -1,4 +1,6 @@
 name: DevSecOps CI/CD Pipeline
+permissions:
+  contents: write
 
 on:
   push:
