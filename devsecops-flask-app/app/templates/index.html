@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevSecOps Web UI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 DevSecOps Pipeline Demo</h1>
+        <p>Web UI secured via CI/CD & DevSecOps</p>
+        <button onclick="loadStatus()">Check Status</button>
+        <pre id="output"></pre>
+    </div>
+
+    <script>
+        function loadStatus() {
+            fetch('/api/status')
+                .then(r => r.json())
+                .then(d => {
+                    document.getElementById("output").innerText =
+                        JSON.stringify(d, null, 2);
+                });
+        }
+    </script>
+</body>
+</html>
