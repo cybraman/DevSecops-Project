@@ -20,7 +20,8 @@ spec:
 
       containers:
         - name: flask-app
-          image: ghcr.io/<your-username>/<your-repo>:sha-xxxxxxx
+          image: ghcr.io/cybraman/DevSecops-Project:latest
+
           # Image tag will be updated automatically by CI/CD
           imagePullPolicy: Always
 
