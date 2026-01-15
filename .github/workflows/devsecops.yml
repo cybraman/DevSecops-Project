@@ -105,7 +105,7 @@ jobs:
 
       # 🔧 FIX 1: Build LOCAL image
       - name: Build Docker image
-        run: docker build -t flask-app:local .
+        run: docker build --no-cache -t flask-app:local .
 
       # 🔧 FIX 2: Trivy scans LOCAL image
       - name: Trivy Image Scan

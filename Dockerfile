@@ -7,7 +7,9 @@ RUN useradd -m appuser
 
 # Install dependencies first (better caching)
 COPY app/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && pip install --no-cache-dir --upgrade "jaraco.context>=6.1.0"
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip uninstall -y jaraco.context || true \
+    && pip install --no-cache-dir "jaraco.context==6.1.0"
 
 # Copy application code
 COPY app/ .
