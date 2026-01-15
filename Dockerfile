@@ -7,18 +7,19 @@ RUN useradd -m appuser
 
 # Install dependencies first (better caching)
 COPY app/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt \
-    && pip uninstall -y jaraco.context || true \
-    && pip install --no-cache-dir "jaraco.context==6.1.0"
+
+RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && python -m pip install --no-cache-dir -r requirements.txt \
+    && python -m pip uninstall -y jaraco.context || true \
+    && python -m pip install --no-cache-dir "jaraco.context==6.1.0" \
+    && python -m pip show jaraco.context
 
 # Copy application code
 COPY app/ .
 
-# Environment variables for Flask (Semgrep-safe)
 ENV FLASK_HOST=0.0.0.0
 ENV FLASK_PORT=5000
 
-# Switch to non-root user
 USER appuser
 
 EXPOSE 5000
