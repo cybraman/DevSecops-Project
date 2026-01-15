@@ -17,6 +17,8 @@ spec:
       # Pod-level security context (recommended)
       securityContext:
         runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
 
       containers:
         - name: flask-app
