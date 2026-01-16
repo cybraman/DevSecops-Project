@@ -2,14 +2,16 @@
 <html>
 <head>
     <title>DevSecOps Web UI</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>DevSecOps Pipeline Project</h1>
-        <p>Web UI secured via CI/CD & DevSecOps</p>
-        <button onclick="loadStatus()">Check Status</button>
-        <pre id="output"></pre>
+        <h1 style="text-align:center;">DevSecOps Pipeline Project</h1>
+        <p style="text-align:center;">Web UI secured via CI/CD &amp; DevSecOps</p>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <button style="margin: 10px auto; display:block;" onclick="loadStatus()">Check Status</button>
+            <pre id="output" style="margin: 0 auto; text-align:center;"></pre>
+        </div>
     </div>
 
     <script>
